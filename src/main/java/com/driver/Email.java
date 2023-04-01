@@ -1,5 +1,7 @@
 package com.driver;
 
+import java.util.regex.Pattern;
+
 public class Email {
 
     private String emailId;
@@ -25,5 +27,42 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
+            if(!oldPassword.equals(this.password)){
+//                System.out.println("Password not match");
+
+                return;
+            }
+            if(oldPassword.length()<8){
+//                System.out.println("less than 8");
+
+                return;
+            }
+            if(!Pattern.compile("[A-Z]").matcher(newPassword).find()){
+//                System.out.println("uppercase missing");
+
+                return;
+            }
+            if(!Pattern.compile("[a-z]").matcher(newPassword).find()){
+//                System.out.println("lowercase missing");
+
+                return;
+            }
+             if(!Pattern.compile("[0-9]").matcher(newPassword).find()){
+//                 System.out.println("Number missing");
+
+            return;
+            }
+            if(!Pattern.compile("[^a-zA-Z0-9]").matcher(newPassword).find()){
+//                System.out.println("special character missing");
+
+                return;
+            }
+            this.password = newPassword;
+//            System.out.println("Password Changed Successfully");
+
+
+
+
+
     }
 }
